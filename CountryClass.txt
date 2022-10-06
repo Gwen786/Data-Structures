@@ -1,0 +1,140 @@
+
+public class Country {
+	//change var types according to csv file
+	private String name;
+	private String capitol;
+	private double population;
+	private double GDP;
+	private double covidCases;
+	private double covidDeaths;
+	private double area;
+	private double CFR;
+	private double GDPPC;
+	private double caseRate;
+	private double deathRate;
+	private double popDensity;
+	
+	public Country() {
+		
+	}
+	public Country(String name, String capitol, double population, double GDP, double covidCases, double covidDeaths, double area) {
+		setName(name);
+		setCapitol(capitol);
+		setPopulation(population);
+		setGDP(GDP);
+		setCovidCases(covidCases);
+		setCovidDeaths(covidDeaths);
+		setArea(area);
+		setCFR(covidDeaths, covidCases);
+		setGDPPC(GDP, population);
+		setCaseRate(covidCases, population);
+		setDeathRate(covidDeaths, population);
+		setPopDensity(population, area);
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setCapitol(String capitol) {
+		this.capitol = capitol;
+	}
+	
+	public String getCapitol() {
+		return capitol;
+	}
+	
+	public void setPopulation(double population) {
+		this.population = population;
+	}
+	
+	
+	public double getPopulation() {
+		return population;
+	}
+	
+	public void setGDP(double GDP) {
+		this.GDP = GDP;
+	}
+	
+	public double getGDP() {
+		return GDP;
+	}
+	
+	public void setCovidCases(double covidCases) {
+		this.covidCases= covidCases;
+	}
+	
+	public double getCovidCases() {
+		return covidCases;
+	}
+	
+	public void setCovidDeaths(double covidDeaths) {
+		this.covidDeaths= covidDeaths;
+	}
+	
+	public double getCovidDeaths() {
+		return covidDeaths;
+	}
+	
+	public void setArea(double area) {
+		this.area = area;
+	}
+	
+	public double getArea() {
+		return area;
+	}
+	
+	public void setCFR(double covidDeaths, double covidCases) {
+		this.CFR = covidDeaths/covidCases;
+	}
+	
+	public double getCFR() {
+		return CFR;
+	}
+	
+	public void setGDPPC(double GDP, double population) {
+		this.GDPPC = GDP/population;
+	}
+	
+	public double getGDPPC() {
+		return GDPPC;
+	}
+	
+	public void setCaseRate(double covidCases, double population) {
+		this.caseRate = (covidCases/population) * 100000;
+	}
+	
+	public double getCaseRate() {
+		return caseRate;
+	}
+	
+	public void setDeathRate(double covidDeaths, double population) {
+		this.deathRate = (covidDeaths/population) * 100000;
+	}
+	
+	public double getDeathRate() {
+		return deathRate;
+	}
+	
+	public void setPopDensity(double population, double area) {
+		this.popDensity = population / area;
+	}
+	
+	public double getPopDensity() {
+		return popDensity;
+	}
+	
+	//todo: finish the print method
+	public void printCountries(Country countries[]) {
+		for(int j = 0; j < countries.length; j++) {
+			System.out.printf("%-35s", countries[j].getName());
+			System.out.printf("%-18s" , countries[j].getCapitol());
+			System.out.printf("%-10.6f",countries[j].getCFR());
+			System.out.printf("%-10.3f\n", countries[j].getGDPPC());
+		}
+	}
